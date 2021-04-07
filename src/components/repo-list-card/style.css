@@ -1,0 +1,61 @@
+.user-card {
+  margin: 48px 0;
+}
+
+.user-avatar {
+  width: 80px;
+}
+
+.user-name {
+  font-size: 24px;
+  font-weight: bold; 
+  margin: 4px 0 16px;
+}
+
+.separator {
+  width: 64%;
+  margin: 8px auto;
+}
+
+.repo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.repo-container--no-repo {
+  justify-content: center;
+}
+
+.repo-card {
+  width: 48%;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 4px;
+  padding: 4px 0;
+}
+
+.repo-name {
+  color: #0366d6;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.repo-name:visited {
+  color: #81bbfd;
+}
+
+.repo-desc {
+  padding: 0 8px;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -1,0 +1,29 @@
+.main-header__title {
+  font-size: 32px;
+  margin: 32px 0;
+}
+
+.main-content {
+  margin: 40px 0;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border-color: grey;
+  border-top-color: white;
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  animation: loading 0.5s infinite linear;
+}

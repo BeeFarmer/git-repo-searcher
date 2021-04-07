@@ -1,0 +1,29 @@
+.search-input {
+  width: 20%;
+  height: 24px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 2px rgb(60 60 60 / 12%);
+  margin-right: 8px;
+}
+
+.search-input:focus,
+.search-input:hover,
+.search-button:hover {
+  outline: none;
+  box-shadow: 0 2px 4px 4px rgb(60 60 60 / 12%);
+}
+
+.search-button:focus {
+  outline: none;
+}
+
+.search-button {
+  width: 60px;
+  height: 32px;
+  color: AliceBlue;
+  background: Grey;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+}
