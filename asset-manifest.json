@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/git-repo-searcher/static/css/main.5fe74a50.chunk.css",
-    "main.js": "/git-repo-searcher/static/js/main.5c05c68a.chunk.js",
-    "main.js.map": "/git-repo-searcher/static/js/main.5c05c68a.chunk.js.map",
+    "main.css": "/git-repo-searcher/static/css/main.2b24a7c8.chunk.css",
+    "main.js": "/git-repo-searcher/static/js/main.53a4a811.chunk.js",
+    "main.js.map": "/git-repo-searcher/static/js/main.53a4a811.chunk.js.map",
     "runtime-main.js": "/git-repo-searcher/static/js/runtime-main.bba2fd11.js",
     "runtime-main.js.map": "/git-repo-searcher/static/js/runtime-main.bba2fd11.js.map",
     "static/js/2.ca9f6755.chunk.js": "/git-repo-searcher/static/js/2.ca9f6755.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.ec3ee151.chunk.js": "/git-repo-searcher/static/js/3.ec3ee151.chunk.js",
     "static/js/3.ec3ee151.chunk.js.map": "/git-repo-searcher/static/js/3.ec3ee151.chunk.js.map",
     "index.html": "/git-repo-searcher/index.html",
-    "static/css/main.5fe74a50.chunk.css.map": "/git-repo-searcher/static/css/main.5fe74a50.chunk.css.map",
+    "static/css/main.2b24a7c8.chunk.css.map": "/git-repo-searcher/static/css/main.2b24a7c8.chunk.css.map",
     "static/js/2.ca9f6755.chunk.js.LICENSE.txt": "/git-repo-searcher/static/js/2.ca9f6755.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bba2fd11.js",
     "static/js/2.ca9f6755.chunk.js",
-    "static/css/main.5fe74a50.chunk.css",
-    "static/js/main.5c05c68a.chunk.js"
+    "static/css/main.2b24a7c8.chunk.css",
+    "static/js/main.53a4a811.chunk.js"
   ]
 }
