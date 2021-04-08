@@ -27,7 +27,7 @@ if (this.cache.hasOwnProperty(lowerCaseKey)) {
   return
 }
 ```
-* import enzyme and jest as the testing tool for code coverage
+* import Enzyme and Jest as the testing tool for code coverage
 ```javascript
 describe('RepoListCard Component', () => {
   let wrapper
@@ -70,4 +70,4 @@ When searching on some general keywords, the api calls may return a giant respon
 For the same scenario, I will do some research to see if I can modify my query to fetch result based on user's current page. There is definitely no need to load hundreds of results if the users can find what they are looking for on the first page. A new api call for x-th page will be invoked when user redirects to x-th page.
 
 ### Apply BEM naming convention and CSS Preprocessor (SCSS)
-I will also try to import Css Preprocessor and formalize the class name for different components with BEM naming convention to handle style change more gracefully. For instance, adding a dark mode feature to the application will simple require root component to pass down the selected mode using React Context API and components will adjust class names within by adding proper modifier (some-class-name--dark).
+I will also try to import CSS Preprocessor and formalize the class name for different components with BEM naming convention to handle style change more gracefully. For instance, adding a dark mode feature to the application will simple require root component to pass down the selected mode using React Context API and components will adjust class names within by adding proper modifier (some-class-name--dark).
