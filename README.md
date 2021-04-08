@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Git Repository Searcher
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project allows users to search for github repository based on user name and it has been deployed to gh-pages on this link https://beefarmer.github.io/git-repo-searcher/. Making too many searching requests from one IP may cause error since Github api source has rate limit. Though with proper authentication the limit could be expanded, I had to comment out the authentication because it's considered as a bad practice while pushing personal OAuth to the repo.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+![screenshot1](https://github.com/BeeFarmer/git-repo-searcher/blob/master/src/screenshots/1.png)
+![screenshot2](https://github.com/BeeFarmer/git-repo-searcher/blob/master/src/screenshots/2.png)
+![screenshot3](https://github.com/BeeFarmer/git-repo-searcher/blob/master/src/screenshots/3.png)
+![screenshot4](https://github.com/BeeFarmer/git-repo-searcher/blob/master/src/screenshots/4.png)
 
-### `yarn start`
+![unit_test](https://github.com/BeeFarmer/git-repo-searcher/blob/master/src/screenshots/unit_tests.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Highlights
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* use react memo and local cache (for api response) for some components to enhance performance
+```javascript
+export default memo(RepoList)
+```
+```javascript
+// check whether the current search term is in cache
+if (this.cache.hasOwnProperty(lowerCaseKey)) {
+  this.setState({
+    userInfo: this.cache[lowerCaseKey],
+    hasError: false,
+  })
+  return
+}
+```
+* import enzyme and jest as the testing tool for code coverage
+```javascript
+describe('RepoListCard Component', () => {
+  let wrapper
+  beforeEach(() => {
+    wrapper = shallow(
+      <RepoListCard
+        userName="mockName"
+        userAvatar="mockAvatar"
+        userRepos={mockUserRepos}
+      />
+    )
+  })
 
-### `yarn test`
+  it('should render', () => {   
+    expect(wrapper).toBeDefined
+  })
+  ...
+ })
+```
+* separate index, style and test files based on components for a more managable code structure
+* set up typechecking in each component with react propTypes
+```javascript
+RepoList.propTypes = {
+  userInfo: arrayOf(
+    shape({
+      login: string,
+      avatarUrl: string,
+      repos: array,
+    })
+  ).isRequired,
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## TODO
+As I was working on this project, I noticed some problems with the current design and potential improvements.
 
-### `yarn build`
+### Enable pagination and lazy-load(?) for large amount search results
+When searching on some general keywords, the api calls may return a giant response back. Without proper pagination, the user would need to scroll all the way down to locate specific user's info. It would be more friendly for users to see the total results number and with help of pagination, they can choose to jump to specific page and searching or be more specific on the search term for a more detailed result list.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For the same scenario, I will do some research to see if I can modify my query to fetch result based on user's current page. There is definitely no need to load hundreds of results if the users can find what they are looking for on the first page. A new api call for x-th page will be invoked when user redirects to x-th page.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Apply BEM naming convention and CSS Preprocessor (SCSS)
+I will also try to import Css Preprocessor and formalize the class name for different components with BEM naming convention to handle style change more gracefully. For instance, adding a dark mode feature to the application will simple require root component to pass down the selected mode using React Context API and components will adjust class names within by adding proper modifier (some-class-name--dark).
