@@ -15,8 +15,8 @@ const RepoListCard = ({
       <p className="user-name">{userName}</p>
       <div className={repoContainerClass}>
         { hasNoRepo && <p>This user has no repository yet...</p> }
-        { userRepos.map(({ description, repoName, repoUrl }) => (
-          <div className="repo-card">
+        { userRepos.map(({ description, repoName, repoUrl }, index) => (
+          <div className="repo-card" key={index}>
             <a className="repo-name" href={repoUrl}>{repoName}</a>
             <p className="repo-desc">{description}</p>
           </div>

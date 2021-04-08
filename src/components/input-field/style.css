@@ -7,17 +7,6 @@
   margin-right: 8px;
 }
 
-.search-input:focus,
-.search-input:hover,
-.search-button:hover {
-  outline: none;
-  box-shadow: 0 2px 4px 4px rgb(60 60 60 / 12%);
-}
-
-.search-button:focus {
-  outline: none;
-}
-
 .search-button {
   width: 60px;
   height: 32px;
@@ -26,4 +15,20 @@
   border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
+  transition-duration: .3s;
+}
+
+.search-input:focus,
+.search-input:hover,
+.search-button:hover {
+  outline: none;
+  box-shadow: 0 2px 4px 4px rgb(60 60 60 / 12%);
+}
+
+.search-button:hover {
+  background-color: #4eb151;
+}
+
+.search-button:focus {
+  outline: none;
 }

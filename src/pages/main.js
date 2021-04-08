@@ -3,11 +3,16 @@ import { InputField, RepoList } from '../components'
 import { getSearchResult, getUserRepos } from '../apiServices'
 
 class MainContainer extends Component {
+  cache = {}
   state = {
     inputValue: '',
     userInfo: [],
     isLoading: false,
     hasError: false,
+  }
+
+  updateCache = (key, res) => {
+    this.cache[key] = res
   }
 
   onInputChange = (e) => {
@@ -16,8 +21,18 @@ class MainContainer extends Component {
 
   onClickHandler = () => {
     const { inputValue: keyword } = this.state
-    this.setState({ isLoading: true, hasError: false })
+    const lowerCaseKey = keyword.toLowerCase()
 
+    // check whether the current search term is in cache
+    if (this.cache.hasOwnProperty(lowerCaseKey)) {
+      this.setState({
+        userInfo: this.cache[lowerCaseKey],
+        hasError: false,
+      })
+      return
+    }
+
+    this.setState({ isLoading: true, hasError: false })
     getSearchResult(keyword)
       .then(({ data }) => {
         const { items = [] } = data
@@ -43,6 +58,8 @@ class MainContainer extends Component {
           isLoading: false,
           userInfo: data,
         })
+        // store the key-response in cache
+        this.updateCache(lowerCaseKey, data)
       })
       .catch((e) => {
         this.setState({ isLoading: false, hasError: true, userInfo: [] })
