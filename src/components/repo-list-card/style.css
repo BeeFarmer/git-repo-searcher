@@ -13,7 +13,7 @@
 }
 
 .separator {
-  width: 64%;
+  width: 72%;
   margin: 8px auto;
 }
 
@@ -22,7 +22,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   margin: 0 auto;
-  width: 80%;
+  width: 64%;
 }
 
 .repo-container--no-repo {
